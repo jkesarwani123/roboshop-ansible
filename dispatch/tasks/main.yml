@@ -1,0 +1,3 @@
+- name: dummy
+  ansible.builtin.debug:
+    msg: hello component-dispatch
