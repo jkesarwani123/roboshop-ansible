@@ -1,4 +1,4 @@
 - name: Roboshop Project
   hosts: all
   roles:
-    - "{{ role_name }}"
+    - frontend
