@@ -2,13 +2,6 @@
   ansible.builtin.debug:
     msg: hello component-frontend
 
-
-
-  print_head "start NGINX server"
-  systemctl enable nginx &>>$log_file
-  systemctl restart nginx &>>$log_file
-  func_status $?
-
 - name: Install NJINX server
   ansible.builtin.yum:
     name: nginx
@@ -34,3 +27,9 @@
     src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
     dest: /usr/share/nginx/html
     remote_src: yes
+
+- name: start NGINX server
+  ansible.builtin.systemd:
+    state: restarted
+    name: nginx
+    enabled: true
