@@ -4,10 +4,6 @@
 
 
 
-  print_head "Copy Config file"
-  cp roboshop.conf /etc/nginx/default.d/roboshop.conf &>>$log_file
-  func_status $?
-  
   print_head "Remove frontend page"
   rm -rf /usr/share/nginx/html/* &>>$log_file
   func_status $?
@@ -30,3 +26,13 @@
     ansible.builtin.yum:
       name: nginx
       state: installed
+
+- name: Copy Config file
+  ansible.builtin.copy:
+    src: roboshop.conf
+    dest: /etc/nginx/default.d/roboshop.conf
+
+- name: Remove frontend page
+  ansible.builtin.file:
+    path: /usr/share/nginx/html
+    state: absent
