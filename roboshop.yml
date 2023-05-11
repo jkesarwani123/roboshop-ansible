@@ -3,4 +3,4 @@
   vars:
    role_name: dummy
   roles:
-    - {{ role_name }}
+    - "{{ role_name }}"
