@@ -1,4 +1,5 @@
 - name: Roboshop Project
   hosts: all
+  vars: role_name
   roles:
     - { { role_name } }
