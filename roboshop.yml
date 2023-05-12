@@ -1,6 +1,6 @@
 - name: Roboshop Project
   hosts: all
-  become: yes
+  become: true
   vars:
    role_name: dummy
   roles:
