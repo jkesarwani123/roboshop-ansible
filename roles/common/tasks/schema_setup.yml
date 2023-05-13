@@ -14,6 +14,26 @@
     - name: Load Schema
       ansible.builtin.shell: mongo --host {{ lookup('aws_ssm', 'dev.catalogue.mongo_endpoint', region='us-east-1' ) }} </app/schema/{{component}}.js
 
+- name: Install SQL schema
+  when: schema_setup == "mysql"
+  block:
+    - name: Install SQL
+      ansible.builtin.yum:
+        name: mysql
+
+    - name: Load SQL Schema
+      ansible.builtin.shell: mysql -h {{ lookup('aws_ssm', 'dev.shipping.mysql_url', region='us-east-1' ) }} -u{{ lookup('aws_ssm', 'dev.shipping.db_user', region='us-east-1' ) }} -p{{ lookup('aws_ssm', 'dev.shipping.db_pass', region='us-east-1' ) }} < /app/schema/{{component}}.sql
+
+
+
+
+#  print_head Install SQL
+#  yum install mysql -y &>>$log_file
+#  func_status $?
+#
+#  print_head Load SQL Schema
+#  mysql -h mysql.jkdevops.online -uroot -p${mysql_password} < /app/schema/${component}.sql &>>$log_file
+#  func_status $?
 
 
 
