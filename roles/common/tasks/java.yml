@@ -1,5 +1,5 @@
 - name: Install Maven for java
-  ansible.builin.yum:
+  ansible.builtin.yum:
     name: maven
     state: installed
 
@@ -8,7 +8,7 @@
     file: prereq.yml
 
 - name: Install Java Dependencies
-  ansible.builtin.shell: mvn clean package ; mv target/${component}-1.0.jar ${component}.jar
+  ansible.builtin.shell: mvn clean package ; mv target/{{component}}-1.0.jar {{component}}.jar
   args:
     chdir: /app
 
