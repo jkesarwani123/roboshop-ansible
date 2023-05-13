@@ -20,16 +20,7 @@
   ansible.builtin.import_tasks:
     file: schema_setup.yml
 
+- name: Install SystemD service
+  ansible.builtin.import_tasks:
+    file: systemd_setup.yml
 
-
-
-
-#print_head Install application content
-#func_prereq
-#
-#print_head Install NodeJS Dependencies
-#sudo npm install &>>$log_file
-#func_status $?
-#
-#schema_setup
-#func_systemd_setup
