@@ -1,3 +1,9 @@
 - name: dummy
   ansible.builtin.debug:
     msg: hello component-catalogue
+
+
+#  print_head "calling nodejs function"
+#  component=catalogue
+#  schema_setup=mongo
+#  func_nodejs
