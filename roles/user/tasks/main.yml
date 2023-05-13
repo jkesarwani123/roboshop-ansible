@@ -1,3 +1,14 @@
 - name: dummy
   ansible.builtin.debug:
-    msg: hello component-user
+   msg: hello component-user
+
+- name: calling nodejs function
+  ansible.builtin.import_role:
+   name: common
+   tasks_from: nodejs
+
+
+#  print_head calling nodejs function
+#  component=user
+#  schema_setup=mongo
+#  func_nodejs
