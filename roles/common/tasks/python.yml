@@ -1,0 +1,31 @@
+- name: Install Python
+  ansible.builtin.yum:
+    name:
+      - python36
+      - gcc
+      - python3-devel
+    state: installed
+
+- name: Install application content
+  ansible.builtin.import_tasks:
+    file: prereq.yml
+
+- name: Install Dependencies
+  ansible.builtin.shell: pip3.6 install -r requirements.txt
+  args:
+    chdir: /app
+
+- name: Install Schema Setup
+  ansible.builtin.import_tasks:
+    file: schema_setup.yml
+
+- name: Install SystemD service
+  ansible.builtin.import_tasks:
+    file: systemd_setup.yml
+
+
+#print_head update passwords
+#sed -i -e "s|rabbitmq_app_password|${rabbitmq_app_password}|" ${script_path}/${component}.service &>>$log_file
+#func_status $?
+#
+#func_systemd_setup
