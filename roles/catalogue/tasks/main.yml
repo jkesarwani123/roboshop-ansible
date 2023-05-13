@@ -2,6 +2,10 @@
   ansible.builtin.debug:
     msg: hello component-catalogue
 
+- name: calling nodejs function
+    ansible.builtin.import_role:
+      name: common
+      tasks_from: nodejs
 
 #  print_head "calling nodejs function"
 #  component=catalogue

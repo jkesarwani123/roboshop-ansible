@@ -8,8 +8,8 @@
     state: installed
 
 - name: Install application content
-    ansible.builtin.import_tasks:
-      file: prereq.yml
+  ansible.builtin.import_tasks:
+   file: prereq.yml
 
 - name: Install NodeJS Dependencies
   ansible.builtin.shell: npm install
