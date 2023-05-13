@@ -1,0 +1,23 @@
+- name: Setup SystemD Service file
+  ansible.builtin.template:
+    src: "{{component}}.service"
+    dest: /etc/systemd/system/{{component}}.service
+
+- name: Start SystemD Service
+  ansible.builtin.systemd:
+    state: restarted
+    name: "{{ component }}"
+    enabled: true
+    daemon_reload: true
+
+
+
+#print_head "Setup ${component} SystemD Service"
+#cp ${script_path}/${component}.service /etc/systemd/system/${component}.service &>>$log_file
+#func_status $?
+#
+#print_head "Start ${component} Service"
+#systemctl daemon-reload &>>$log_file
+#systemctl enable ${component} &>>$log_file
+#systemctl restart ${component} &>>$log_file
+#func_status $?
