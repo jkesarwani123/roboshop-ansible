@@ -18,9 +18,9 @@
 
 - name: Mongo Schema Setup
   ansible.builtin.import_tasks:
-    file: schema_setup
+    file: schema_setup.yml
 
 - name: Install SystemD service
   ansible.builtin.import_tasks:
-    file: systemd_setup
+    file: systemd_setup.yml
 
