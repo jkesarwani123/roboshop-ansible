@@ -5,7 +5,7 @@
 
 - name: Install application content
   ansible.builtin.import_tasks:
-    file: prereq.yml
+    file: prereq
 
 - name: Install Java Dependencies
   ansible.builtin.shell: mvn clean package ; mv target/{{component}}-1.0.jar {{component}}.jar
