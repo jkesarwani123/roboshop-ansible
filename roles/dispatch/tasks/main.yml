@@ -1,3 +1,26 @@
 - name: dummy
   ansible.builtin.debug:
     msg: hello component-dispatch
+
+- name: Install GolAng
+  ansible.builtin.yum:
+    name: golang
+    state: installed
+
+- name: calling Pre-requisites function
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: prereq
+
+- name: Install GoLang Dependencies
+  ansible.builtin.shell: go mod init dispatch ; go get ; go build
+  args:
+    chdir: /app
+
+- name: Install Schema Setup
+  ansible.builtin.import_tasks:
+    file: schema_setup
+
+- name: Install SystemD service
+  ansible.builtin.import_tasks:
+    file: systemd_setup

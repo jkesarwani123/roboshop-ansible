@@ -17,11 +17,11 @@
 
 - name: Install Schema Setup
   ansible.builtin.import_tasks:
-    file: schema_setup.yml
+    file: schema_setup
 
 - name: Install SystemD service
   ansible.builtin.import_tasks:
-    file: systemd_setup.yml
+    file: systemd_setup
 
 
 #print_head update passwords
