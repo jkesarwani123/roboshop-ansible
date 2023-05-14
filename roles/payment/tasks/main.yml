@@ -1,3 +1,8 @@
 - name: dummy
   ansible.builtin.debug:
     msg: hello component-payment
+
+- name: calling python function
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: python
