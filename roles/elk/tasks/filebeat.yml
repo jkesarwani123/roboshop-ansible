@@ -10,7 +10,7 @@
 
 - name: copy filebeat config file
   ansible.builtin.template:
-    src: filebeat1.yml
+    src: filebeat-1.yml
     dest: /etc/filebeat/filebeat.yml
 
 - name: start filebeat
