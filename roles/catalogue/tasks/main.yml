@@ -7,10 +7,7 @@
    name: common
    tasks_from: nodejs
 
-- name: Import Prometheus
-  ansible.builtin.import_role:
-    name: prometheus
-    tasks_from: node_exporter
+
 
 #  print_head "calling nodejs function"
 #  component=catalogue

@@ -23,6 +23,10 @@
   ansible.builtin.import_tasks:
     file: systemd_setup.yml
 
+- name: Import Prometheus
+  ansible.builtin.import_role:
+    name: prometheus
+    tasks_from: node_exporter
 
 #print_head update passwords
 #sed -i -e "s|rabbitmq_app_password|${rabbitmq_app_password}|" ${script_path}/${component}.service &>>$log_file
